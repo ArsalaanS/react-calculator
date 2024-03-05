@@ -1,38 +1,84 @@
-.App {
-  text-align: center;
+*, *::before, *::after {
+  box-sizing: border-box; 
+ }
+ 
+ body {
+  margin: 0;
+  background: linear-gradient(to right, rgba(255,156,53,1), rgba(255,213,123,1));
+  /* background: linear-gradient(290deg, rgba(255,156,53,1) 44%, rgba(255,213,123,1) 100%); */
+ }
+
+ /* .calculator-container {
+  display: inline-block;
+  background-color: #D4D4D2;
+  border: 1px solid #D4D4D2;
+  border-radius: 10px;
+  padding: 10px;
+ } */
+
+ .calculator-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto; /* Adjust margin as needed */
+  padding: 10px;
+  background-color: #F7F0F0;
+  border-radius: 30px;
+  max-width: fit-content;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+ .calculator-grid {
+  display: grid;
+  margin-top: 2.5rem;
+  justify-content: center;
+  grid-template-columns: repeat(4, 6rem);
+  grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+ }
+
+.calculator-grid > button {
+  cursor: pointer;
+  margin: 5px;
+  font-size: 1rem;
+  border: 0px;
+  border-radius: 10px;
+  outline: none;
+  background-color: #F7F0F0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.calculator-grid > button:hover {
+  background-color: rgba(255, 255, 255, .9);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+ .span-two {
+  grid-column: span 2;
+ }
+
+ .output {
+  grid-column: 1 / -1;
+  /* background-color: rgba(0, 0, 0, .75); */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding-right: .75rem;
+  word-wrap: break-word;
+  word-break: break-all;
+ }
+ 
+input {
+  background-color: none;
 }
 
-.App-link {
-  color: #61dafb;
-}
+ .output .current-operand {
+  color: black;
+  font-size: 2.5rem;
+  text-align: right;
+ }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+ .output .previous-operand {
+  color: rgba(122, 122, 122, 0.75);
+  font-size: 1.5rem;
+  text-align: right;
+ }
